@@ -36,6 +36,7 @@ dependencies:
   get: ^4.1.4
   google_fonts: ^2.1.0
   http: ^0.13.3
+  material_design_icons_flutter: ^4.0.5955
   provider: ^5.0.0
   supercharged: ^2.0.0
 
