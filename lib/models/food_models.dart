@@ -1,6 +1,6 @@
 part of 'models.dart';
 
-class FoodModels {
+class Food extends Equatable {
   final int id;
   final String picturePath;
   final String name;
@@ -9,7 +9,10 @@ class FoodModels {
   final int price;
   final double rate;
 
-  FoodModels(
+// * kode di atas sebelumnya belum di tambah equatable. equatable berfungsi sebagai alat testing nantinya
+// * kemudian nanti di tambah overide parameter yang akan di bandingkan
+
+  Food(
       {this.id,
       this.picturePath,
       this.name,
@@ -17,10 +20,14 @@ class FoodModels {
       this.ingredients,
       this.price,
       this.rate});
+
+  @override
+  List<Object> get props =>
+      [id, picturePath, name, description, ingredients, price, rate];
 }
 
-List<FoodModels> mockFoods = [
-  FoodModels(
+List<Food> mockFoods = [
+  Food(
     id: 1,
     picturePath: 'https://picsum.photos/200/300',
     name: 'Makanan Khas Sunda',
@@ -30,7 +37,7 @@ List<FoodModels> mockFoods = [
     price: 10000,
     rate: 4.2,
   ),
-  FoodModels(
+  Food(
     id: 2,
     picturePath: 'https://picsum.photos/200/300',
     name: 'Makanan Khas Sunda',
@@ -40,7 +47,7 @@ List<FoodModels> mockFoods = [
     price: 10000,
     rate: 4.2,
   ),
-  FoodModels(
+  Food(
     id: 3,
     picturePath: 'https://picsum.photos/200/300',
     name: 'Makanan Khas Sunda',
@@ -50,7 +57,7 @@ List<FoodModels> mockFoods = [
     price: 10000,
     rate: 4.2,
   ),
-  FoodModels(
+  Food(
     id: 4,
     picturePath: 'https://picsum.photos/200/300',
     name: 'Makanan Khas Sunda',
@@ -60,7 +67,7 @@ List<FoodModels> mockFoods = [
     price: 10000,
     rate: 4.2,
   ),
-  FoodModels(
+  Food(
     id: 5,
     picturePath: 'https://picsum.photos/200/300',
     name: 'Makanan Khas Sunda',
@@ -70,7 +77,7 @@ List<FoodModels> mockFoods = [
     price: 10000,
     rate: 4.2,
   ),
-  FoodModels(
+  Food(
     id: 6,
     picturePath: 'https://picsum.photos/200/300',
     name: 'Makanan Khas Sunda',

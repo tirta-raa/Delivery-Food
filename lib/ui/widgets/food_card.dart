@@ -1,7 +1,7 @@
 part of 'widgets.dart';
 
 class FoodCard extends StatelessWidget {
-  final FoodModels food;
+  final Food food;
 
   FoodCard(this.food);
 
