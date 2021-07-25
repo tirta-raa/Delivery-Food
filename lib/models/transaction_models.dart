@@ -82,7 +82,7 @@ List<Transaction> mockTranscation = [
   // * di buat list transaksi bohongan
   //  * kemudian di buat transactionya dengan id 1 foodnya di ambil dari mockFoods kenapa bisa di ambil dari mockfood karena di atas sudah di masukan food yang di dimpor dari food models [1] angka satu itu dari item ke satu
   //  * quantiti atau jumlahnya 7
-  //  * kemudian harga mockfood 1 di kali total qunatity di kali 1.1 itu artinya pajak 10% di tambah 50.000
+  //  * kemudian harga mockfood 1 di kali total qunatity di kali 1.1 itu artinya pajak 10% di tambah 50.000 itu ongkos kirim
   //  * date time di tambahkan itu emang udah ada dari flutternya
   //  * statusnya di ganti menjadi on delivery karena sudah di buat enumnya di paling atas
 ];
