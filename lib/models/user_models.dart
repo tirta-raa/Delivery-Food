@@ -5,7 +5,7 @@ class User extends Equatable {
   final String name;
   final String email;
   final String address;
-  final String housenumber;
+  final String houseNumber;
   final String phoneNumber;
   final String city;
   final String picturePath;
@@ -15,14 +15,14 @@ class User extends Equatable {
       this.name,
       this.email,
       this.address,
-      this.housenumber,
+      this.houseNumber,
       this.phoneNumber,
       this.city,
       this.picturePath});
 
   @override
   List<Object> get props =>
-      [id, name, email, address, housenumber, phoneNumber, city, picturePath];
+      [id, name, email, address, houseNumber, phoneNumber, city, picturePath];
 }
 
 User mockUser = User(
@@ -30,7 +30,7 @@ User mockUser = User(
   name: 'John Doe',
   email: 'doe@gmail.com',
   address: '123 Fake Street',
-  housenumber: '123',
+  houseNumber: '123',
   phoneNumber: '555-1212',
   city: 'New York',
   picturePath: 'https://picsum.photos/200/300',
