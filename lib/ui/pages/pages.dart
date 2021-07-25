@@ -21,3 +21,6 @@ part 'main_page.dart';
 part 'food_page.dart';
 part 'food_detail_page.dart';
 part 'payment_page.dart';
+part 'ilustration_page.dart';
+part 'success_sign_up.dart';
+part 'success_order_page.dart';
