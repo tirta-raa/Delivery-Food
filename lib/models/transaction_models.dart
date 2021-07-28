@@ -1,6 +1,6 @@
 part of 'models.dart';
 
-enum TransactionStatus { deliered, on_delivery, pending, cancelled }
+enum TransactionStatus { delivered, on_delivery, pending, cancelled }
 
 // * fungsi enum adalah mengganti atau memberi nama pada status yang tadinya berupa angka menjadi kata
 
@@ -67,7 +67,7 @@ List<Transaction> mockTranscation = [
     quantity: 7,
     total: (mockFoods[2].price * 7 * 1.1).round() + 50000,
     dateTime: DateTime.now(),
-    status: TransactionStatus.deliered,
+    status: TransactionStatus.delivered,
     user: mockUser,
   ),
   Transaction(

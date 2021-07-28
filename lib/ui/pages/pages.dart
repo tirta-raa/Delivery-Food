@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:math';
 
 import 'package:deliveryfood/models/models.dart';
@@ -7,7 +8,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:http/http.dart';
 import 'package:intl/intl.dart';
 import 'package:supercharged/supercharged.dart';
 import 'package:get/get.dart';
@@ -24,3 +24,6 @@ part 'payment_page.dart';
 part 'ilustration_page.dart';
 part 'success_sign_up.dart';
 part 'success_order_page.dart';
+part 'order_history_page.dart';
+part 'profile_page.dart';
+part 'splash_screen.dart';

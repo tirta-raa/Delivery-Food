@@ -33,5 +33,6 @@ User mockUser = User(
   houseNumber: '123',
   phoneNumber: '555-1212',
   city: 'New York',
-  picturePath: 'https://picsum.photos/200/300',
+  picturePath:
+      'https://images.unsplash.com/photo-1499482125586-91609c0b5fd4?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=668&q=80',
 );

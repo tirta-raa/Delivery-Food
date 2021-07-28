@@ -87,7 +87,9 @@ class _SignInPageState extends State<SignInPage> {
                 color: mainColor,
               )
             : RaisedButton(
-                onPressed: () {},
+                onPressed: () {
+                  Get.to(MainPage());
+                },
                 elevation: 0,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(8),
@@ -95,7 +97,7 @@ class _SignInPageState extends State<SignInPage> {
                 color: mainColor,
                 child: Text(
                   'Sign In',
-                  style: blackFontStyle3,
+                  style: blackFontStyle3.copyWith(color: Colors.white),
                 ),
               ),
       );

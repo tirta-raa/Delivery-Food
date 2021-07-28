@@ -44,7 +44,8 @@ class _FoodPageState extends State<FoodPage> {
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(8),
                 image: DecorationImage(
-                  image: NetworkImage('https://picsum.photos/200/300'),
+                  image: NetworkImage(
+                      'https://images.unsplash.com/photo-1499482125586-91609c0b5fd4?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=668&q=80'),
                   fit: BoxFit.cover,
                 ),
               ),
