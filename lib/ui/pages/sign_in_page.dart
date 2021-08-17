@@ -6,12 +6,12 @@ class SignInPage extends StatefulWidget {
 }
 
 class _SignInPageState extends State<SignInPage> {
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+  bool isLoading = false;
+
   @override
   Widget build(BuildContext context) {
-    TextEditingController emailController = TextEditingController();
-    TextEditingController passwordController = TextEditingController();
-    bool isLoading = false;
-
     Widget inputEmail() {
       return Column(
         children: [
@@ -82,10 +82,7 @@ class _SignInPageState extends State<SignInPage> {
         margin: EdgeInsets.only(top: defaultMargin),
         padding: EdgeInsets.symmetric(horizontal: defaultMargin),
         child: isLoading
-            ? SpinKitCircle(
-                size: 45,
-                color: mainColor,
-              )
+            ? loadingIndicator
             : RaisedButton(
                 onPressed: () {
                   Get.to(MainPage());

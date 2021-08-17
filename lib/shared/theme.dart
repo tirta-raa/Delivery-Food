@@ -3,6 +3,11 @@ part of 'shared.dart';
 Color mainColor = 'FA4A0C'.toColor();
 Color greyColor = '8D92A3'.toColor();
 
+Widget loadingIndicator = SpinKitCircle(
+  size: 45,
+  color: mainColor,
+);
+
 TextStyle greyFontStyle = GoogleFonts.poppins().copyWith(
   color: greyColor,
 );
