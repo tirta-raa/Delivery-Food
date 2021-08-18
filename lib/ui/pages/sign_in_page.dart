@@ -133,6 +133,13 @@ class _SignInPageState extends State<SignInPage> {
                       isLoading = false;
                     });
                   }
+
+                  // *  arti kode di atas adalah untuk mengecek apakah state yang ada dalam usercubit adalah userloadingfailed
+                  // *   get snacbar adalah pop up yang muncul dari bawaan paket get
+                  // *   di berikan kutip dua karena akan di isi oleh pesasn yang ada di cubit
+                  // * kasih warna merah dengan icon silang dengan judul pesan sign in failed
+                  // *  mesage textnya di isi dengan state saat ini yaitu userloading failed dengan message yang ada di api return value
+                  // *  kemudian sestate di bbuat false agar bisa di klik kembali tombolnya
                 },
                 elevation: 0,
                 shape: RoundedRectangleBorder(
