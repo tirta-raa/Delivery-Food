@@ -15,12 +15,12 @@ class UserCubit extends Cubit<UserState> {
 // * kemudian async dari api return value of User 'models' karena mengambil datanya dari api yang di simoan di result
 // * kemudian tungu hinga userservices yang berisi fungsi sign email dan password
 
-    if (result != null) {
+    if (result.value != null) {
       emit(UserLoaded(result.value));
     } else {
       emit(UserLoadingFailed(result.message));
 
-      // * kemudian if jika result tidak sama dengan null atau kosong maka kembalikan userloaded yang berisi nilai result
+      // * kemudian if jika result yang nilainya tidak sama dengan null atau kosong maka kembalikan userloaded yang berisi nilai result
       // * selaiinn itu jika result sama dengan null alias gagal memuat yang dikarenakan salah email atau password atau ga ada internet
       // * makak tampilkan userloadingfailed yang mengembalikan hasil pesan dari user state
 

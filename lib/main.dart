@@ -1,6 +1,8 @@
-import 'package:deliveryfood/models/models.dart';
+import 'package:deliveryfood/cubit/cubit.dart';
+import 'package:deliveryfood/cubit/user_cubit.dart';
 import 'package:deliveryfood/ui/pages/pages.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
 
 void main() {
@@ -10,9 +12,16 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: SplashScreen(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (_) => UserCubit()),
+        BlocProvider(create: (_) => TransactionCubit()),
+        BlocProvider(create: (_) => FoodCubit()),
+      ],
+      child: GetMaterialApp(
+        debugShowCheckedModeBanner: false,
+        home: SignInPage(),
+      ),
     );
   }
 }

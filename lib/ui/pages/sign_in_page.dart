@@ -84,8 +84,55 @@ class _SignInPageState extends State<SignInPage> {
         child: isLoading
             ? loadingIndicator
             : RaisedButton(
-                onPressed: () {
-                  Get.to(MainPage());
+                onPressed: () async {
+                  setState(() {
+                    isLoading = true;
+                  });
+
+                  await context
+                      .bloc<UserCubit>()
+                      .signIn(emailController.text, passwordController.text);
+                  UserState state = context.bloc<UserCubit>().state;
+
+                  if (state is UserLoaded) {
+                    context.bloc<FoodCubit>().getFood();
+                    context.bloc<TransactionCubit>().getTransactions();
+                    Get.to(MainPage());
+
+                    // * arti kode di atas adalah tunggu context dari bloc usercubit kemudian panggil fungsi sigIn k=yang di dalamnya di isi email controler dan text controler
+                    // * kemudian userstate di simoan dalam state sama dengan context dari bloc of usercubit di state
+                    // * kemudian di cek kondisinya jika if state  is adalah userloaded maka tampilkan
+                    // * context yang ada dibloc of food cubit dan fungsi getFood
+                    // * context yang ada dibloc of transaction cubit dan fungsi getTransactions
+                    // * kemudian pergi ke page main
+
+                  } else {
+                    Get.snackbar(
+                      '',
+                      '',
+                      backgroundColor: 'D9435E'.toColor(),
+                      icon: Icon(
+                        MdiIcons.closeCircleOutline,
+                        color: Colors.white,
+                      ),
+                      titleText: Text(
+                        'Sign In Failed',
+                        style: GoogleFonts.poppins(
+                          color: Colors.white,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                      messageText: Text(
+                        (state as UserLoadingFailed).message,
+                        style: GoogleFonts.poppins(
+                          color: Colors.white,
+                        ),
+                      ),
+                    );
+                    setState(() {
+                      isLoading = false;
+                    });
+                  }
                 },
                 elevation: 0,
                 shape: RoundedRectangleBorder(
