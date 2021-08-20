@@ -100,45 +100,52 @@ class _FoodPageState extends State<FoodPage> {
       return Container(
         height: 258,
         width: double.infinity,
-        child: ListView(
-          scrollDirection: Axis.horizontal,
-          children: [
-            Row(
-              children: mockFoods
-                  .map((e) => Padding(
-                        padding: EdgeInsets.only(
-                          left: (e == mockFoods.first) ? defaultMargin : 0,
-                          right: defaultMargin,
-                        ),
-                        child: GestureDetector(
-                          onTap: () {
-                            Get.to(FoodDetailPage(
-                              transaction: Transaction(
-                                  food: e,
-                                  user: (context.bloc<UserCubit>().state
-                                          as UserLoaded)
-                                      .user),
-                              onBackButtonPressed: () {
-                                Get.back();
-                              },
-                            ));
-                          },
+        child: BlocBuilder<FoodCubit, FoodState>(
+          builder: (_, state) => (state is FoodLoaded)
+              ? ListView(
+                  scrollDirection: Axis.horizontal,
+                  children: [
+                    Row(
+                      children: state.foods
+                          // * ketika sudah di tambahkan bloc maka mockfood di ganti denga state saat ini yaitu saat state sedang foodLoaded
+                          .map((e) => Padding(
+                                padding: EdgeInsets.only(
+                                  left: (e == state.foods.first)
+                                      ? defaultMargin
+                                      : 0,
+                                  right: defaultMargin,
+                                ),
+                                child: GestureDetector(
+                                  onTap: () {
+                                    Get.to(FoodDetailPage(
+                                      transaction: Transaction(
+                                          food: e,
+                                          user: (context.bloc<UserCubit>().state
+                                                  as UserLoaded)
+                                              .user),
+                                      onBackButtonPressed: () {
+                                        Get.back();
+                                      },
+                                    ));
+                                  },
 
-                          // * arti kode di atas adatalh ketka di klik maka pergi ke halaman foodetail page
-                          // * kemudian tampilkan transaction yang di ambil dari transaction models
-                          // *  food menampilkan e karena di awal map di beri nama e
-                          // *  user menampilkan data user yang saat login dari usercubit
-                          // *  ketika kembali di tekan maka kemnbali ke halaman selanjutnya
+                                  // * arti kode di atas adatalh ketka di klik maka pergi ke halaman foodetail page
+                                  // * kemudian tampilkan transaction yang di ambil dari transaction models
+                                  // *  food menampilkan e karena di awal map di beri nama e
+                                  // *  user menampilkan data user yang saat login dari usercubit
+                                  // *  ketika kembali di tekan maka kemnbali ke halaman selanjutnya
 
-                          child: FoodCard(e),
-                        ),
-                      ))
-                  .toList(),
-            )
-          ],
+                                  child: FoodCard(e),
+                                ),
+                              ))
+                          .toList(),
+                    )
+                  ],
+                )
+              : Center(child: loadingIndicator),
         ),
       );
-      // * arti kode di atas adalah di ambil mockup json dengan nama mockfood dari foodsmodels
+      // * arti kode di atas adalah di ambil state saat login dengan food dari food cubit dengan dari foodsmodels
       // * kemudian di map dengan nama e dengan kunci foodcard ambil data dari e
       // * kemudian di beri jarak hanya kiri jika e sama dengan food card yang pertama maka kasih default margin
       // * selain itu jangan di berikan jarak
@@ -279,23 +286,32 @@ class _FoodPageState extends State<FoodPage> {
             SizedBox(
               height: 16,
             ),
-            Builder(
-              builder: (_) {
-                List<Food> foods = (selectedIndex == 0)
-                    ? mockFoods
-                    : (selectedIndex == 1)
-                        ? []
-                        : [];
-                return Column(
-                  children: foods
-                      .map((e) => Padding(
-                            padding: EdgeInsets.fromLTRB(
-                                defaultMargin, 0, defaultMargin, 16),
-                            child:
-                                FoodListItem(food: e, itemWidht: listItemWidht),
-                          ))
-                      .toList(),
-                );
+            BlocBuilder<FoodCubit, FoodState>(
+              builder: (_, state) {
+                if (state is FoodLoaded) {
+                  List<Food> foods = state.foods
+                      .where((element) =>
+                          element.types.contains((selectedIndex == 0)
+                              ? FoodType.new_food
+                              : (selectedIndex == 1)
+                                  ? FoodType.popular
+                                  : FoodType.recomended))
+                      .toList();
+                  return Column(
+                    children: foods
+                        .map((e) => Padding(
+                              padding: EdgeInsets.fromLTRB(
+                                  defaultMargin, 0, defaultMargin, 16),
+                              child: FoodListItem(
+                                  food: e, itemWidht: listItemWidht),
+                            ))
+                        .toList(),
+                  );
+                } else {
+                  return Center(
+                    child: loadingIndicator,
+                  );
+                }
               },
             ),
             //  * dibuat builder dengan fungsi _  kemudian tampilkan list of food models dengan nama foods

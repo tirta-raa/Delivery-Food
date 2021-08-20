@@ -11,7 +11,7 @@ class FoodCubit extends Cubit<FoodState> {
   Future<void> getFood() async {
     ApiReturnValue<List<Food>> result = await FoodServices.getFoods();
 
-    if (result != null) {
+    if (result.value != null) {
       emit(FoodLoaded(result.value));
     } else {
       emit(FoodLoadingFaild(result.message));

@@ -15,8 +15,8 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (_) => UserCubit()),
-        BlocProvider(create: (_) => TransactionCubit()),
         BlocProvider(create: (_) => FoodCubit()),
+        BlocProvider(create: (_) => TransactionCubit()),
       ],
       child: GetMaterialApp(
         debugShowCheckedModeBanner: false,

@@ -10,7 +10,9 @@ class SuccessOrderPage extends StatelessWidget {
         subtitle: 'Just stay at home while we are \npreparing your best foods',
         picturePath: 'assets/bike.png',
         buttonTitle1: 'Order Other Foods',
-        buttonTap1: () {},
+        buttonTap1: () {
+          Get.offAll(MainPage());
+        },
         buttonTitle2: 'View My Order',
         buttonTap2: () {},
       ),
