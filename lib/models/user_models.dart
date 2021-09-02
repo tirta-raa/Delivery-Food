@@ -9,6 +9,7 @@ class User extends Equatable {
   final String phoneNumber;
   final String city;
   final String picturePath;
+  static String token;
 
   User(
       {this.id,
@@ -19,6 +20,34 @@ class User extends Equatable {
       this.phoneNumber,
       this.city,
       this.picturePath});
+
+  //* metode copywith ini berfungsi untuk mengkopi sebuah onjek user menjadi sebuah objek user yang baru
+  //* dengan properti yang bisa di ubah sesuai dengan parameter yang di masukan
+
+  User copyWith({
+    int id,
+    String name,
+    String email,
+    String address,
+    String houseNumber,
+    String phoneNumber,
+    String city,
+    String picturePath,
+  }) =>
+      User(
+        //* dimana user yang baru akan menggunakan field yang lama kecuali ada parameter yang dimasukan
+        //* contoh jika id di isi dengan parameter baru  maka akan di ganti dengan parameter baru
+        // * kalau null atau kosong ga di ganti atau ga di isi maka tampilkan parameter lama yaitu this.id
+
+        id: id ?? this.id,
+        name: name ?? this.name,
+        email: email ?? this.email,
+        address: address ?? this.address,
+        houseNumber: houseNumber ?? this.houseNumber,
+        phoneNumber: phoneNumber ?? this.phoneNumber,
+        city: city ?? this.city,
+        picturePath: picturePath ?? this.picturePath,
+      );
 
   @override
   List<Object> get props =>
