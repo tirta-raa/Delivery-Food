@@ -21,6 +21,20 @@ class User extends Equatable {
       this.city,
       this.picturePath});
 
+  //* membuat fungsi fromJson dengan parameter Map string dinamis dengan nama data
+  //* key ['id'] dan lain lainya disesuaikan dengan nama yang berada di API
+
+  factory User.fromJson(Map<String, dynamic> data) => User(
+        id: data['id'],
+        name: data['name'],
+        email: data['email'],
+        address: data['address'],
+        houseNumber: data['houseNumber'],
+        phoneNumber: data['phoneNumber'],
+        city: data['city'],
+        picturePath: data['profile_photo_url'],
+      );
+
   //* metode copywith ini berfungsi untuk mengkopi sebuah onjek user menjadi sebuah objek user yang baru
   //* dengan properti yang bisa di ubah sesuai dengan parameter yang di masukan
 
