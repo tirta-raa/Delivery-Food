@@ -27,6 +27,36 @@ class Food extends Equatable {
     // * di buat types list kosong karena akan di isi sesuai dengan keadaan
   });
 
+  //* di buat penyetaraan nama models dengan api
+  //* di buat fungsi fromJson dari food model yang berisi parameter map string dinamis dengan nama data
+  //* Food models mengembalikan id dengan map id yang sesuai dari api atau sesuai dengan nama dari apo
+  factory Food.fromJson(Map<String, dynamic> data) => Food(
+        id: data['id'],
+        picturePath: data['picturePath'],
+        name: data['name'],
+        description: data['description'],
+        ingredients: data['ingredients'],
+        price: data['price'],
+        //? data dari rate ini di ubah jadi double karena kalau di api ada datanya  4 maka akan di ubah jadi int bukan double
+        //? yang akan menyebabkan eror karena rate itu tipe double bukan int
+        rate: (data['rate'] as num).toDouble(),
+        //? untuk types karena di api di tulisnya recomended,popular,new_food yaitu di pisahkan berdasarkan koma
+        //? maka types di ubah menjadi string kemudian di split atau di pisahkan berdasarkan koma kemudian di map
+        //? di switch berdasarkan e dengan nama recomended mengembalikan foodtype.recomended dan seterusnya
+        types: data['types'].toString().split(',').map((e) {
+          switch (e) {
+            case 'recomended':
+              return FoodType.recomended;
+              break;
+            case 'popular':
+              return FoodType.popular;
+              break;
+            default:
+              return FoodType.new_food;
+          }
+        }).toList(),
+      );
+
   @override
   List<Object> get props =>
       [id, picturePath, name, description, ingredients, price, rate];

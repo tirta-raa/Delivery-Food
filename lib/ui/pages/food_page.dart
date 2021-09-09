@@ -108,6 +108,7 @@ class _FoodPageState extends State<FoodPage> {
                     Row(
                       children: state.foods
                           // * ketika sudah di tambahkan bloc maka mockfood di ganti denga state saat ini yaitu saat state sedang foodLoaded
+                          //* sehingga ketika di pasang api maka foods yang dari food serives akan mengambil data dari api
                           .map((e) => Padding(
                                 padding: EdgeInsets.only(
                                   left: (e == state.foods.first)
