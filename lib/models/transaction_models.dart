@@ -12,6 +12,7 @@ class Transaction extends Equatable {
   final DateTime dateTime;
   final TransactionStatus status;
   final User user;
+  final String paymentUrl;
 
   Transaction(
       {this.id,
@@ -20,7 +21,26 @@ class Transaction extends Equatable {
       this.total,
       this.dateTime,
       this.status,
-      this.user});
+      this.user,
+      this.paymentUrl});
+
+  factory Transaction.fromJson(Map<String, dynamic> data) => Transaction(
+        id: data['id'],
+        food: Food.fromJson(data['food']),
+        quantity: data['quantity'],
+        total: data['total'],
+        //? karena waktunya berbentuk epoch maka ubah dulu dari epoch ke date time
+        dateTime: DateTime.fromMicrosecondsSinceEpoch(data['created_at']),
+        //? untuk status jka status di api tulisanya pending maka munculkan TransactionStatus.pending dan seterusnya
+        status: (data['status'] == 'PENDING')
+            ? TransactionStatus.pending
+            : (data['status'] == 'DELIVERED')
+                ? TransactionStatus.delivered
+                : (data['status'] == 'CANCELED')
+                    ? TransactionStatus.cancelled
+                    : TransactionStatus.on_delivery,
+        paymentUrl: data['payment_url'],
+      );
 
   Transaction copyWith(
       {int id,
