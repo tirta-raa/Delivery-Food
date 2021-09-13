@@ -86,15 +86,26 @@ class _OrderHistoryPageState extends State<OrderHistoryPage> {
                               (e) => Padding(
                                 padding: EdgeInsets.fromLTRB(
                                     defaultMargin, 0, defaultMargin, 16),
-                                child: OrderListItem(
-                                    transaction: e, itemWidht: listItemWidht),
+                                child: GestureDetector(
+                                  //? jadi ketika di hisoty masih pending maka kita bisa klik untuk membayar
+                                  onTap: () async {
+                                    if (e.status == TransactionStatus.pending) {
+                                      await launch(e.paymentUrl);
+                                    }
+                                  },
+                                  child: OrderListItem(
+                                      transaction: e, itemWidht: listItemWidht),
+                                ),
                               ),
                             )
                             .toList(),
-                        // * arti kode di atas adalah ketika builder sudah selesai menentukan status transaksi makan kembalikan
+                        // * arti kode di atas adalah ketikaj builder sudah selesai menentukan status transaksi makan kembalikan
                         // * transaction dengan map disimoan dengan nama 'e' mengembaalikan orderlistitem dengan nama transation 'e' dan itemwidht sesuai dengan list item widht'
                       );
-                    })
+                    }),
+                    SizedBox(
+                      height: 60,
+                    ),
                   ],
                 ),
               ),
