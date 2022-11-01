@@ -3,7 +3,7 @@ part of 'widgets.dart';
 class RatingStars extends StatelessWidget {
   final double rate;
 
-  RatingStars(this.rate);
+  const RatingStars(this.rate, {Key key}) : super(key: key);
   // *dibuat sebuah bilangan dengan nama rate
 
   @override
@@ -23,7 +23,7 @@ class RatingStars extends StatelessWidget {
             // * maka munculkan bintang warna penuh kalau tidak munculkan warna bintang outline saja
           ) +
           [
-            SizedBox(
+            const SizedBox(
               width: 4,
             ),
             Text(

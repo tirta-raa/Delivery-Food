@@ -22,9 +22,7 @@ class UserSevices {
 
   static Future<ApiReturnValue<User>> signIn(String email, String pasword,
       {http.Client client}) async {
-    if (client == null) {
-      client = http.Client();
-    }
+    client ??= http.Client();
 
     //* kemudian buat prameter String url dengan isi baseUrl + login
     String url = baseUrl + 'login';
@@ -58,9 +56,7 @@ class UserSevices {
 
   static Future<ApiReturnValue<User>> signUp(User user, String password,
       {File pictureFile, http.Client client}) async {
-    if (client == null) {
-      client = http.Client();
-    }
+    client ??= http.Client();
 
     //*baseUrl liat di services.dart
     String url = baseUrl + 'register';
@@ -177,6 +173,7 @@ class UserSevices {
 
       //* kembalikan return api return value dengan isi nilai imagePath
       //* kalau gagal kembalikan pesan upload profile picture failed
+      // ignore: todo
       //* setelah ini selesai baru mengerjakan TODO upload picture
 
       return ApiReturnValue(value: imagePath);

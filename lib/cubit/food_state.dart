@@ -11,7 +11,7 @@ class FoodInitial extends FoodState {}
 
 class FoodLoaded extends FoodState {
   final List<Food> foods;
-  FoodLoaded(this.foods);
+  const FoodLoaded(this.foods);
 
   @override
   List<Object> get props => [foods];
@@ -19,7 +19,7 @@ class FoodLoaded extends FoodState {
 
 class FoodLoadingFaild extends FoodState {
   final String message;
-  FoodLoadingFaild(this.message);
+  const FoodLoadingFaild(this.message);
 
   @override
   List<Object> get props => [message];

@@ -1,8 +1,10 @@
+// ignore_for_file: deprecated_member_use
+
 part of 'pages.dart';
 
 class PaymentPage extends StatefulWidget {
   final Transaction transaction;
-  PaymentPage({this.transaction});
+  const PaymentPage({Key key, this.transaction}) : super(key: key);
 
   @override
   State<PaymentPage> createState() => _PaymentPageState();
@@ -20,7 +22,7 @@ class _PaymentPageState extends State<PaymentPage> {
             'Item Order',
             style: blackFontStyle3,
           ),
-          SizedBox(
+          const SizedBox(
             height: 12,
           ),
         ],
@@ -38,7 +40,7 @@ class _PaymentPageState extends State<PaymentPage> {
               Container(
                 width: 60,
                 height: 60,
-                margin: EdgeInsets.only(right: 12),
+                margin: const EdgeInsets.only(right: 12),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(8),
                   image: DecorationImage(
@@ -92,7 +94,7 @@ class _PaymentPageState extends State<PaymentPage> {
 
     Widget detailText() {
       return Padding(
-        padding: EdgeInsets.only(top: 16, bottom: 8),
+        padding: const EdgeInsets.only(top: 16, bottom: 8),
         child: Text(
           'Details Transaction',
           style: blackFontStyle3,
@@ -320,7 +322,7 @@ class _PaymentPageState extends State<PaymentPage> {
 
     Widget deliverToText() {
       return Padding(
-        padding: EdgeInsets.only(top: 16, bottom: 8),
+        padding: const EdgeInsets.only(top: 16, bottom: 8),
         child: Text(
           'Deliver To',
           style: blackFontStyle3,
@@ -481,9 +483,9 @@ class _PaymentPageState extends State<PaymentPage> {
           : Container(
               width: double.infinity,
               height: 45,
-              margin: EdgeInsets.only(top: defaultMargin),
-              padding: EdgeInsets.symmetric(horizontal: defaultMargin),
-              child: RaisedButton(
+              margin: const EdgeInsets.only(top: defaultMargin),
+              padding: const EdgeInsets.symmetric(horizontal: defaultMargin),
+              child: ElevatedButton(
                 onPressed: () async {
                   setState(() {
                     isLoading = true;
@@ -520,7 +522,7 @@ class _PaymentPageState extends State<PaymentPage> {
 
                     Get.snackbar('', '',
                         backgroundColor: 'D9435E'.toColor(),
-                        icon: Icon(MdiIcons.closeCircleOutline,
+                        icon: const Icon(MdiIcons.closeCircleOutline,
                             color: Colors.white),
                         titleText: Text(
                           'Transaction Failed',
@@ -535,11 +537,13 @@ class _PaymentPageState extends State<PaymentPage> {
                         ));
                   }
                 },
-                elevation: 0,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(8),
+                style: ElevatedButton.styleFrom(
+                  elevation: 0,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  backgroundColor: mainColor,
                 ),
-                color: mainColor,
                 child: Text(
                   'Chekout Now',
                   style: blackFontStyle3,
@@ -556,9 +560,9 @@ class _PaymentPageState extends State<PaymentPage> {
       child: Column(
         children: [
           Container(
-            margin: EdgeInsets.only(bottom: defaultMargin),
-            padding:
-                EdgeInsets.symmetric(horizontal: defaultMargin, vertical: 16),
+            margin: const EdgeInsets.only(bottom: defaultMargin),
+            padding: const EdgeInsets.symmetric(
+                horizontal: defaultMargin, vertical: 16),
             color: Colors.white,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -574,9 +578,9 @@ class _PaymentPageState extends State<PaymentPage> {
             ),
           ),
           Container(
-            margin: EdgeInsets.only(bottom: defaultMargin),
-            padding:
-                EdgeInsets.symmetric(horizontal: defaultMargin, vertical: 16),
+            margin: const EdgeInsets.only(bottom: defaultMargin),
+            padding: const EdgeInsets.symmetric(
+                horizontal: defaultMargin, vertical: 16),
             color: Colors.white,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,

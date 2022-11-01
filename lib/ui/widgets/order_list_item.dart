@@ -4,7 +4,9 @@ class OrderListItem extends StatelessWidget {
   final Transaction transaction;
   final double itemWidht;
 
-  OrderListItem({@required this.transaction, @required this.itemWidht});
+  const OrderListItem(
+      {Key key, @required this.transaction, @required this.itemWidht})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -12,7 +14,7 @@ class OrderListItem extends StatelessWidget {
       return Container(
         width: 60,
         height: 60,
-        margin: EdgeInsets.only(right: 12),
+        margin: const EdgeInsets.only(right: 12),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(8),
           image: DecorationImage(
@@ -82,7 +84,7 @@ class OrderListItem extends StatelessWidget {
                             style: GoogleFonts.poppins(
                                 color: '1ABC9C'.toColor(), fontSize: 10),
                           )
-                        : SizedBox(),
+                        : const SizedBox(),
           ],
         ),
       );

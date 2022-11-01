@@ -1,6 +1,10 @@
+// ignore_for_file: deprecated_member_use
+
 part of 'pages.dart';
 
 class ProfilePage extends StatefulWidget {
+  const ProfilePage({Key key}) : super(key: key);
+
   @override
   _ProfilePageState createState() => _ProfilePageState();
 }
@@ -14,9 +18,9 @@ class _ProfilePageState extends State<ProfilePage> {
       return Container(
         width: 110,
         height: 110,
-        margin: EdgeInsets.only(bottom: 16),
-        padding: EdgeInsets.all(10),
-        decoration: BoxDecoration(
+        margin: const EdgeInsets.only(bottom: 16),
+        padding: const EdgeInsets.all(10),
+        decoration: const BoxDecoration(
           image: DecorationImage(
             image: AssetImage('assets/photo_border.png'),
           ),
@@ -73,7 +77,7 @@ class _ProfilePageState extends State<ProfilePage> {
         child: Column(
           children: [
             CustomTabBar(
-              titles: ['Account', 'Food Market'],
+              titles: const ['Account', 'Food Market'],
               selectedIndex: selectedIndex,
               onTap: (index) {
                 setState(() {
@@ -81,7 +85,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 });
               },
             ),
-            SizedBox(
+            const SizedBox(
               height: 16,
             ),
             Column(
@@ -95,7 +99,8 @@ class _ProfilePageState extends State<ProfilePage> {
                         ])
                   .map(
                     (e) => Padding(
-                      padding: EdgeInsets.symmetric(horizontal: defaultMargin),
+                      padding:
+                          const EdgeInsets.symmetric(horizontal: defaultMargin),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -127,8 +132,8 @@ class _ProfilePageState extends State<ProfilePage> {
         Column(
           children: [
             Container(
-              margin: EdgeInsets.only(bottom: defaultMargin),
-              padding: EdgeInsets.symmetric(horizontal: defaultMargin),
+              margin: const EdgeInsets.only(bottom: defaultMargin),
+              padding: const EdgeInsets.symmetric(horizontal: defaultMargin),
               width: double.infinity,
               height: 220,
               color: Colors.white,
@@ -141,7 +146,7 @@ class _ProfilePageState extends State<ProfilePage> {
               ),
             ),
             tabBar(),
-            SizedBox(
+            const SizedBox(
               height: 80,
             ),
           ],

@@ -3,7 +3,7 @@ part of 'pages.dart';
 class PaymentMethodage extends StatelessWidget {
   final String paymentUrl;
 
-  PaymentMethodage(this.paymentUrl);
+  const PaymentMethodage(this.paymentUrl, {Key key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,7 +20,7 @@ class PaymentMethodage extends StatelessWidget {
           },
           buttonTitle2: 'Continue ',
           buttonTap2: () {
-            Get.to(SuccessOrderPage());
+            Get.to(const SuccessOrderPage());
           }),
     );
   }

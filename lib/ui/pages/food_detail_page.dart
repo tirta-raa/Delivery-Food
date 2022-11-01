@@ -4,7 +4,8 @@ class FoodDetailPage extends StatefulWidget {
   final Function onBackButtonPressed;
   final Transaction transaction;
 
-  FoodDetailPage({this.onBackButtonPressed, this.transaction});
+  const FoodDetailPage({Key key, this.onBackButtonPressed, this.transaction})
+      : super(key: key);
 
   @override
   _FoodDetailPageState createState() => _FoodDetailPageState();
@@ -50,7 +51,7 @@ class _FoodDetailPageState extends State<FoodDetailPage> {
     Widget whiteBackPressButton() {
       return Container(
         height: 100,
-        padding: EdgeInsets.symmetric(horizontal: defaultMargin),
+        padding: const EdgeInsets.symmetric(horizontal: defaultMargin),
         child: Align(
           alignment: Alignment.centerLeft,
           child: GestureDetector(
@@ -61,7 +62,7 @@ class _FoodDetailPageState extends State<FoodDetailPage> {
             },
             // * jika widget dari onbackbuttonpressed tidak sama dengan null maka widget munculkan widget onbackbuttonpressed
             child: Container(
-              padding: EdgeInsets.all(3),
+              padding: const EdgeInsets.all(3),
               width: 30,
               height: 30,
               decoration: BoxDecoration(
@@ -89,7 +90,7 @@ class _FoodDetailPageState extends State<FoodDetailPage> {
               style: blackFontStyle2,
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 6,
           ),
           RatingStars(widget.transaction.food.rate),
@@ -113,7 +114,7 @@ class _FoodDetailPageState extends State<FoodDetailPage> {
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(8),
                 border: Border.all(width: 1),
-                image: DecorationImage(
+                image: const DecorationImage(
                   image: AssetImage('assets/btn_min.png'),
                 ),
               ),
@@ -141,7 +142,7 @@ class _FoodDetailPageState extends State<FoodDetailPage> {
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(8),
                 border: Border.all(width: 1),
-                image: DecorationImage(
+                image: const DecorationImage(
                   image: AssetImage('assets/btn_add.png'),
                 ),
               ),
@@ -156,7 +157,7 @@ class _FoodDetailPageState extends State<FoodDetailPage> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
-            margin: EdgeInsets.fromLTRB(0, 14, 0, 16),
+            margin: const EdgeInsets.fromLTRB(0, 14, 0, 16),
             child: Text(
               widget.transaction.food.description,
               style: greyFontStyle,
@@ -167,7 +168,7 @@ class _FoodDetailPageState extends State<FoodDetailPage> {
             style: blackFontStyle3,
           ),
           Container(
-            margin: EdgeInsets.fromLTRB(0, 4, 0, 41),
+            margin: const EdgeInsets.fromLTRB(0, 4, 0, 41),
             child: Text(
               widget.transaction.food.ingredients,
               style: greyFontStyle,
@@ -203,19 +204,23 @@ class _FoodDetailPageState extends State<FoodDetailPage> {
       return SizedBox(
         width: 163,
         height: 45,
-        child: RaisedButton(
+        child: ElevatedButton(
           onPressed: () {
-            Get.to(PaymentPage(
-              transaction: widget.transaction.copyWith(
-                quantity: quantity,
-                total: quantity * widget.transaction.food.price,
+            Get.to(
+              PaymentPage(
+                transaction: widget.transaction.copyWith(
+                  quantity: quantity,
+                  total: quantity * widget.transaction.food.price,
+                ),
               ),
-            ));
+            );
           },
-          color: mainColor,
-          elevation: 0,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(8),
+          style: ElevatedButton.styleFrom(
+            backgroundColor: mainColor,
+            elevation: 0,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(8),
+            ),
           ),
           child: Text(
             'Order Now',
@@ -242,10 +247,10 @@ class _FoodDetailPageState extends State<FoodDetailPage> {
                     // * Body
 
                     Container(
-                      margin: EdgeInsets.only(top: 180),
-                      padding:
-                          EdgeInsets.symmetric(vertical: 26, horizontal: 16),
-                      decoration: BoxDecoration(
+                      margin: const EdgeInsets.only(top: 180),
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 26, horizontal: 16),
+                      decoration: const BoxDecoration(
                         borderRadius: BorderRadius.only(
                           topLeft: Radius.circular(20),
                           topRight: Radius.circular(20),

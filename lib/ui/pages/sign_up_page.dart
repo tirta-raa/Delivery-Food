@@ -1,6 +1,10 @@
+// ignore_for_file: deprecated_member_use
+
 part of 'pages.dart';
 
 class SignUpPage extends StatefulWidget {
+  const SignUpPage({Key key}) : super(key: key);
+
   @override
   _SignUpPageState createState() => _SignUpPageState();
 }
@@ -60,9 +64,9 @@ class _SignUpPageState extends State<SignUpPage> {
         child: Container(
           width: 110,
           height: 110,
-          margin: EdgeInsets.only(top: 26),
-          padding: EdgeInsets.all(10),
-          decoration: BoxDecoration(
+          margin: const EdgeInsets.only(top: 26),
+          padding: const EdgeInsets.all(10),
+          decoration: const BoxDecoration(
             image: DecorationImage(
               image: AssetImage('assets/photo_border.png'),
             ),
@@ -81,7 +85,7 @@ class _SignUpPageState extends State<SignUpPage> {
                   ),
                 )
               : Container(
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                     shape: BoxShape.circle,
                     image: DecorationImage(
                       image: AssetImage(
@@ -100,7 +104,8 @@ class _SignUpPageState extends State<SignUpPage> {
         children: [
           Container(
             width: double.infinity,
-            margin: EdgeInsets.fromLTRB(defaultMargin, 16, defaultMargin, 6),
+            margin:
+                const EdgeInsets.fromLTRB(defaultMargin, 16, defaultMargin, 6),
             child: Text(
               'Full Name',
               style: blackFontStyle2,
@@ -108,8 +113,8 @@ class _SignUpPageState extends State<SignUpPage> {
           ),
           Container(
             width: double.infinity,
-            margin: EdgeInsets.symmetric(horizontal: defaultMargin),
-            padding: EdgeInsets.symmetric(horizontal: 10),
+            margin: const EdgeInsets.symmetric(horizontal: defaultMargin),
+            padding: const EdgeInsets.symmetric(horizontal: 10),
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(8),
                 border: Border.all(color: Colors.black)),
@@ -131,7 +136,8 @@ class _SignUpPageState extends State<SignUpPage> {
         children: [
           Container(
             width: double.infinity,
-            margin: EdgeInsets.fromLTRB(defaultMargin, 16, defaultMargin, 6),
+            margin:
+                const EdgeInsets.fromLTRB(defaultMargin, 16, defaultMargin, 6),
             child: Text(
               'Email Adress',
               style: blackFontStyle2,
@@ -139,8 +145,8 @@ class _SignUpPageState extends State<SignUpPage> {
           ),
           Container(
             width: double.infinity,
-            margin: EdgeInsets.symmetric(horizontal: defaultMargin),
-            padding: EdgeInsets.symmetric(horizontal: 10),
+            margin: const EdgeInsets.symmetric(horizontal: defaultMargin),
+            padding: const EdgeInsets.symmetric(horizontal: 10),
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(8),
                 border: Border.all(color: Colors.black)),
@@ -162,7 +168,8 @@ class _SignUpPageState extends State<SignUpPage> {
         children: [
           Container(
             width: double.infinity,
-            margin: EdgeInsets.fromLTRB(defaultMargin, 16, defaultMargin, 6),
+            margin:
+                const EdgeInsets.fromLTRB(defaultMargin, 16, defaultMargin, 6),
             child: Text(
               'Password',
               style: blackFontStyle2,
@@ -170,8 +177,8 @@ class _SignUpPageState extends State<SignUpPage> {
           ),
           Container(
             width: double.infinity,
-            margin: EdgeInsets.symmetric(horizontal: defaultMargin),
-            padding: EdgeInsets.symmetric(horizontal: 10),
+            margin: const EdgeInsets.symmetric(horizontal: defaultMargin),
+            padding: const EdgeInsets.symmetric(horizontal: 10),
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(8),
                 border: Border.all(color: Colors.black)),
@@ -222,9 +229,9 @@ class _SignUpPageState extends State<SignUpPage> {
       return Container(
         width: double.infinity,
         height: 45,
-        margin: EdgeInsets.only(top: defaultMargin),
-        padding: EdgeInsets.symmetric(horizontal: defaultMargin),
-        child: RaisedButton(
+        margin: const EdgeInsets.only(top: defaultMargin),
+        padding: const EdgeInsets.symmetric(horizontal: defaultMargin),
+        child: ElevatedButton(
           onPressed: () {
             Get.to(AdressPage(
               User(
@@ -235,11 +242,13 @@ class _SignUpPageState extends State<SignUpPage> {
               pictureFile,
             ));
           },
-          elevation: 0,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(8),
+          style: ElevatedButton.styleFrom(
+            elevation: 0,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(8),
+            ),
+            backgroundColor: mainColor,
           ),
-          color: mainColor,
           child: Text(
             'Continue',
             style: blackFontStyle3,

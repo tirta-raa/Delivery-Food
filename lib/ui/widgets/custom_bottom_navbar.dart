@@ -4,7 +4,8 @@ class CustomBottomNavbar extends StatelessWidget {
   final int selectedIndex;
   final Function(int index) onTap;
   // ketka membuat buttom navbar memberikan fungsi sebuah int ya itu index yang di atas
-  CustomBottomNavbar({this.selectedIndex = 0, this.onTap});
+  const CustomBottomNavbar({Key key, this.selectedIndex = 0, this.onTap})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +39,7 @@ class CustomBottomNavbar extends StatelessWidget {
           }
         },
         child: Container(
-          margin: EdgeInsets.symmetric(horizontal: 83),
+          margin: const EdgeInsets.symmetric(horizontal: 83),
           width: 32,
           height: 32,
           decoration: BoxDecoration(

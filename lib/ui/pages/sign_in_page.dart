@@ -1,6 +1,10 @@
+// ignore_for_file: deprecated_member_use
+
 part of 'pages.dart';
 
 class SignInPage extends StatefulWidget {
+  const SignInPage({Key key}) : super(key: key);
+
   @override
   _SignInPageState createState() => _SignInPageState();
 }
@@ -17,7 +21,8 @@ class _SignInPageState extends State<SignInPage> {
         children: [
           Container(
             width: double.infinity,
-            margin: EdgeInsets.fromLTRB(defaultMargin, 26, defaultMargin, 6),
+            margin:
+                const EdgeInsets.fromLTRB(defaultMargin, 26, defaultMargin, 6),
             child: Text(
               'Email Adress',
               style: blackFontStyle2,
@@ -25,8 +30,8 @@ class _SignInPageState extends State<SignInPage> {
           ),
           Container(
             width: double.infinity,
-            margin: EdgeInsets.symmetric(horizontal: defaultMargin),
-            padding: EdgeInsets.symmetric(horizontal: 10),
+            margin: const EdgeInsets.symmetric(horizontal: defaultMargin),
+            padding: const EdgeInsets.symmetric(horizontal: 10),
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(8),
                 border: Border.all(color: Colors.black)),
@@ -48,7 +53,8 @@ class _SignInPageState extends State<SignInPage> {
         children: [
           Container(
             width: double.infinity,
-            margin: EdgeInsets.fromLTRB(defaultMargin, 16, defaultMargin, 6),
+            margin:
+                const EdgeInsets.fromLTRB(defaultMargin, 16, defaultMargin, 6),
             child: Text(
               'Password',
               style: blackFontStyle2,
@@ -56,8 +62,8 @@ class _SignInPageState extends State<SignInPage> {
           ),
           Container(
             width: double.infinity,
-            margin: EdgeInsets.symmetric(horizontal: defaultMargin),
-            padding: EdgeInsets.symmetric(horizontal: 10),
+            margin: const EdgeInsets.symmetric(horizontal: defaultMargin),
+            padding: const EdgeInsets.symmetric(horizontal: 10),
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(8),
                 border: Border.all(color: Colors.black)),
@@ -79,11 +85,11 @@ class _SignInPageState extends State<SignInPage> {
       return Container(
         width: double.infinity,
         height: 45,
-        margin: EdgeInsets.only(top: defaultMargin),
-        padding: EdgeInsets.symmetric(horizontal: defaultMargin),
+        margin: const EdgeInsets.only(top: defaultMargin),
+        padding: const EdgeInsets.symmetric(horizontal: defaultMargin),
         child: isLoading
             ? loadingIndicator
-            : RaisedButton(
+            : ElevatedButton(
                 onPressed: () async {
                   setState(() {
                     isLoading = true;
@@ -97,7 +103,7 @@ class _SignInPageState extends State<SignInPage> {
                   if (state is UserLoaded) {
                     context.bloc<FoodCubit>().getFood();
                     context.bloc<TransactionCubit>().getTransactions();
-                    Get.to(MainPage());
+                    Get.to(const MainPage());
 
                     // * arti kode di atas adalah tunggu context dari bloc usercubit kemudian panggil fungsi sigIn k=yang di dalamnya di isi email controler dan text controler
                     // * kemudian userstate di simoan dalam state sama dengan context dari bloc of usercubit di state
@@ -111,7 +117,7 @@ class _SignInPageState extends State<SignInPage> {
                       '',
                       '',
                       backgroundColor: 'D9435E'.toColor(),
-                      icon: Icon(
+                      icon: const Icon(
                         MdiIcons.closeCircleOutline,
                         color: Colors.white,
                       ),
@@ -141,11 +147,13 @@ class _SignInPageState extends State<SignInPage> {
                   // *  mesage textnya di isi dengan state saat ini yaitu userloading failed dengan message yang ada di api return value
                   // *  kemudian sestate di bbuat false agar bisa di klik kembali tombolnya
                 },
-                elevation: 0,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(8),
+                style: ElevatedButton.styleFrom(
+                  elevation: 0,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  backgroundColor: mainColor,
                 ),
-                color: mainColor,
                 child: Text(
                   'Sign In',
                   style: blackFontStyle3.copyWith(color: Colors.white),
@@ -158,22 +166,24 @@ class _SignInPageState extends State<SignInPage> {
       return Container(
         width: double.infinity,
         height: 45,
-        margin: EdgeInsets.only(top: defaultMargin),
-        padding: EdgeInsets.symmetric(horizontal: defaultMargin),
+        margin: const EdgeInsets.only(top: defaultMargin),
+        padding: const EdgeInsets.symmetric(horizontal: defaultMargin),
         child: isLoading
             ? SpinKitCircle(
                 size: 45,
                 color: greyColor,
               )
-            : RaisedButton(
+            : ElevatedButton(
                 onPressed: () {
-                  Get.to(SignUpPage());
+                  Get.to(const SignUpPage());
                 },
-                elevation: 0,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(8),
+                style: ElevatedButton.styleFrom(
+                  elevation: 0,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  backgroundColor: greyColor,
                 ),
-                color: greyColor,
                 child: Text('Create New Account',
                     style: GoogleFonts.poppins(
                         color: Colors.white, fontWeight: FontWeight.w500)),

@@ -7,12 +7,14 @@ class GeneralPage extends StatelessWidget {
   final Widget child;
   final Color backColor;
 
-  GeneralPage(
-      {this.title = 'Tittle',
+  const GeneralPage(
+      {Key key,
+      this.title = 'Tittle',
       this.subtitle = 'subtittle',
       this.onBackButtonPressed,
       this.child,
-      this.backColor});
+      this.backColor})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +35,8 @@ class GeneralPage extends StatelessWidget {
                 Column(
                   children: [
                     Container(
-                      padding: EdgeInsets.symmetric(horizontal: defaultMargin),
+                      padding:
+                          const EdgeInsets.symmetric(horizontal: defaultMargin),
                       width: double.infinity,
                       height: 100,
                       color: Colors.white,
@@ -49,14 +52,14 @@ class GeneralPage extends StatelessWidget {
                                   child: Container(
                                     width: 24,
                                     height: 24,
-                                    margin: EdgeInsets.only(right: 26),
-                                    decoration: BoxDecoration(
+                                    margin: const EdgeInsets.only(right: 26),
+                                    decoration: const BoxDecoration(
                                         image: DecorationImage(
                                             image: AssetImage(
                                                 'assets/back_arrow.png'))),
                                   ),
                                 )
-                              : SizedBox(),
+                              : const SizedBox(),
 
                           // * arti kode di atas adalah jika onbackbuttonpressed tidak sama dengan null maka tampilkan gambar kembali
                           // * jika tidak munculkan sizebox kosong
@@ -88,7 +91,7 @@ class GeneralPage extends StatelessWidget {
                       width: double.infinity,
                       color: 'FAFAFC'.toColor(),
                     ),
-                    child ?? SizedBox(),
+                    child ?? const SizedBox(),
                   ],
                 ),
               ],

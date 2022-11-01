@@ -1,6 +1,10 @@
+// ignore_for_file: deprecated_member_use, duplicate_ignore
+
 part of 'pages.dart';
 
 class FoodPage extends StatefulWidget {
+  const FoodPage({Key key}) : super(key: key);
+
   @override
   _FoodPageState createState() => _FoodPageState();
 }
@@ -17,7 +21,7 @@ class _FoodPageState extends State<FoodPage> {
 
     Widget header() {
       return Container(
-        padding: EdgeInsets.symmetric(horizontal: defaultMargin),
+        padding: const EdgeInsets.symmetric(horizontal: defaultMargin),
         color: Colors.white,
         height: 100,
         width: double.infinity,
@@ -48,6 +52,7 @@ class _FoodPageState extends State<FoodPage> {
 
                       // * sebelumnya di isi url image biasa sebelum di isi bloc
 
+                      // ignore: deprecated_member_use
                       (context.bloc<UserCubit>().state as UserLoaded)
                           .user
                           .picturePath),
@@ -97,7 +102,7 @@ class _FoodPageState extends State<FoodPage> {
 // * carOfood di bawah di gunakan ketika sudah di sambungkan dengan bloc serta ketika di klik card foodnya akan berpindah ke menu detail
 
     Widget cardOfFood() {
-      return Container(
+      return SizedBox(
         height: 258,
         width: double.infinity,
         child: BlocBuilder<FoodCubit, FoodState>(
@@ -272,7 +277,7 @@ class _FoodPageState extends State<FoodPage> {
         child: Column(
           children: [
             CustomTabBar(
-              titles: ['New Taste', 'Popular', 'Recomended'],
+              titles: const ['New Taste', 'Popular', 'Recomended'],
               selectedIndex: selectedIndex,
               onTap: (index) {
                 setState(() {
@@ -284,7 +289,7 @@ class _FoodPageState extends State<FoodPage> {
             // * selected indexnya di pilih int selcted index yang ada di paling atas
             // * kemudian ontap dari custom tabbar di buat sendiri dengan isi index
             // * kemudian setstate selected index sama dengan index
-            SizedBox(
+            const SizedBox(
               height: 16,
             ),
             BlocBuilder<FoodCubit, FoodState>(
@@ -301,7 +306,7 @@ class _FoodPageState extends State<FoodPage> {
                   return Column(
                     children: foods
                         .map((e) => Padding(
-                              padding: EdgeInsets.fromLTRB(
+                              padding: const EdgeInsets.fromLTRB(
                                   defaultMargin, 0, defaultMargin, 16),
                               child: FoodListItem(
                                   food: e, itemWidht: listItemWidht),
@@ -322,7 +327,7 @@ class _FoodPageState extends State<FoodPage> {
             //  *  kemudian kembalikan dalam bentuk column karena akan di bentuk column ke bawah
             //  * childrenya di isi dengan foods kemudian di map parameter e => foodlistitem dengan food e dan itemwidhnya adalah lisItemWidht
             //  * jangan lupa di beri jarak ltrb maka ltrb di bungkus dengan pading dengan jarang kiri kanan degfault margin, atas nol dan bawah 16
-            SizedBox(
+            const SizedBox(
               height: 80,
             ),
           ],

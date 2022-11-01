@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 part of 'pages.dart';
 
 class AdressPage extends StatefulWidget {
@@ -7,7 +9,8 @@ class AdressPage extends StatefulWidget {
   final String password;
   final File pictureFile;
 
-  AdressPage(this.user, this.password, this.pictureFile);
+  const AdressPage(this.user, this.password, this.pictureFile, {Key key})
+      : super(key: key);
 
   @override
   _AdressPageState createState() => _AdressPageState();
@@ -51,7 +54,8 @@ class _AdressPageState extends State<AdressPage> {
         children: [
           Container(
             width: double.infinity,
-            margin: EdgeInsets.fromLTRB(defaultMargin, 16, defaultMargin, 6),
+            margin:
+                const EdgeInsets.fromLTRB(defaultMargin, 16, defaultMargin, 6),
             child: Text(
               'Phone No',
               style: blackFontStyle2,
@@ -59,8 +63,8 @@ class _AdressPageState extends State<AdressPage> {
           ),
           Container(
             width: double.infinity,
-            margin: EdgeInsets.symmetric(horizontal: defaultMargin),
-            padding: EdgeInsets.symmetric(horizontal: 10),
+            margin: const EdgeInsets.symmetric(horizontal: defaultMargin),
+            padding: const EdgeInsets.symmetric(horizontal: 10),
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(8),
                 border: Border.all(color: Colors.black)),
@@ -82,7 +86,8 @@ class _AdressPageState extends State<AdressPage> {
         children: [
           Container(
             width: double.infinity,
-            margin: EdgeInsets.fromLTRB(defaultMargin, 16, defaultMargin, 6),
+            margin:
+                const EdgeInsets.fromLTRB(defaultMargin, 16, defaultMargin, 6),
             child: Text(
               'Address',
               style: blackFontStyle2,
@@ -90,8 +95,8 @@ class _AdressPageState extends State<AdressPage> {
           ),
           Container(
             width: double.infinity,
-            margin: EdgeInsets.symmetric(horizontal: defaultMargin),
-            padding: EdgeInsets.symmetric(horizontal: 10),
+            margin: const EdgeInsets.symmetric(horizontal: defaultMargin),
+            padding: const EdgeInsets.symmetric(horizontal: 10),
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(8),
                 border: Border.all(color: Colors.black)),
@@ -113,7 +118,8 @@ class _AdressPageState extends State<AdressPage> {
         children: [
           Container(
             width: double.infinity,
-            margin: EdgeInsets.fromLTRB(defaultMargin, 16, defaultMargin, 6),
+            margin:
+                const EdgeInsets.fromLTRB(defaultMargin, 16, defaultMargin, 6),
             child: Text(
               'House No',
               style: blackFontStyle2,
@@ -121,8 +127,8 @@ class _AdressPageState extends State<AdressPage> {
           ),
           Container(
             width: double.infinity,
-            margin: EdgeInsets.symmetric(horizontal: defaultMargin),
-            padding: EdgeInsets.symmetric(horizontal: 10),
+            margin: const EdgeInsets.symmetric(horizontal: defaultMargin),
+            padding: const EdgeInsets.symmetric(horizontal: 10),
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(8),
                 border: Border.all(color: Colors.black)),
@@ -144,7 +150,8 @@ class _AdressPageState extends State<AdressPage> {
         children: [
           Container(
             width: double.infinity,
-            margin: EdgeInsets.fromLTRB(defaultMargin, 16, defaultMargin, 6),
+            margin:
+                const EdgeInsets.fromLTRB(defaultMargin, 16, defaultMargin, 6),
             child: Text(
               'City',
               style: blackFontStyle2,
@@ -152,15 +159,15 @@ class _AdressPageState extends State<AdressPage> {
           ),
           Container(
             width: double.infinity,
-            margin: EdgeInsets.symmetric(horizontal: defaultMargin),
-            padding: EdgeInsets.symmetric(horizontal: 10),
+            margin: const EdgeInsets.symmetric(horizontal: defaultMargin),
+            padding: const EdgeInsets.symmetric(horizontal: 10),
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(8),
                 border: Border.all(color: Colors.black)),
             child: DropdownButton(
                 value: selectedCity,
                 isExpanded: true,
-                underline: SizedBox(),
+                underline: const SizedBox(),
                 onChanged: (item) {
                   setState(() {
                     selectedCity = item;
@@ -208,11 +215,11 @@ class _AdressPageState extends State<AdressPage> {
       return Container(
         width: double.infinity,
         height: 45,
-        margin: EdgeInsets.only(top: defaultMargin),
-        padding: EdgeInsets.symmetric(horizontal: defaultMargin),
+        margin: const EdgeInsets.only(top: defaultMargin),
+        padding: const EdgeInsets.symmetric(horizontal: defaultMargin),
         child: (isLoading == true)
             ? Center(child: loadingIndicator)
-            : RaisedButton(
+            : ElevatedButton(
                 onPressed: () async {
                   User user = widget.user.copyWith(
                     phoneNumber: phoneController.text,
@@ -232,7 +239,7 @@ class _AdressPageState extends State<AdressPage> {
                   if (state is UserLoaded) {
                     context.bloc<FoodCubit>().getFood();
                     context.bloc<TransactionCubit>().getTransactions();
-                    Get.to(MainPage());
+                    Get.to(const MainPage());
 
                     // * arti kode di atas adalah tunggu context dari bloc usercubit kemudian panggil fungsi sigIn k=yang di dalamnya di isi email controler dan text controler
                     // * kemudian userstate di simoan dalam state sama dengan context dari bloc of usercubit di state
@@ -246,7 +253,7 @@ class _AdressPageState extends State<AdressPage> {
                       '',
                       '',
                       backgroundColor: 'D9435E'.toColor(),
-                      icon: Icon(
+                      icon: const Icon(
                         MdiIcons.closeCircleOutline,
                         color: Colors.white,
                       ),
@@ -276,11 +283,13 @@ class _AdressPageState extends State<AdressPage> {
                   // *  mesage textnya di isi dengan state saat ini yaitu userloading failed dengan message yang ada di api return value
                   // *  kemudian sestate di bbuat false agar bisa di klik kembali tombolnya
                 },
-                elevation: 0,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(8),
+                style: ElevatedButton.styleFrom(
+                  elevation: 0,
+                  backgroundColor: mainColor,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8),
+                  ),
                 ),
-                color: mainColor,
                 child: Text(
                   'Sign Up',
                   style: blackFontStyle3,

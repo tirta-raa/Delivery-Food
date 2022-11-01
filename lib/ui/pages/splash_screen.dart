@@ -1,6 +1,8 @@
 part of 'pages.dart';
 
 class SplashScreen extends StatefulWidget {
+  const SplashScreen({Key key}) : super(key: key);
+
   @override
   State<SplashScreen> createState() => _SplashScreen();
 }
@@ -8,8 +10,8 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreen extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
-    Timer(Duration(seconds: 3), () {
-      Get.to(SignInPage());
+    Timer(const Duration(seconds: 3), () {
+      Get.to(const SignInPage());
     });
     return Scaffold(
       body: Stack(

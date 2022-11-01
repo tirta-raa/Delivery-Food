@@ -1,6 +1,8 @@
 part of 'pages.dart';
 
 class MainPage extends StatefulWidget {
+  const MainPage({Key key}) : super(key: key);
+
   @override
   _MainPageState createState() => _MainPageState();
 }
@@ -32,7 +34,7 @@ class _MainPageState extends State<MainPage> {
               },
               // * onpagechange minta sebuah fungsi(index) dengan parameter int dengan memasukan index page yang sedang di pilih
               //  *selected indexnya (selectedpage) = index;
-              children: [
+              children: const [
                 Center(
                   child: FoodPage(),
                 ),

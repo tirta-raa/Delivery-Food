@@ -4,7 +4,8 @@ class FoodListItem extends StatelessWidget {
   final Food food;
   final double itemWidht;
 
-  FoodListItem({@required this.food, @required this.itemWidht});
+  const FoodListItem({Key key, @required this.food, @required this.itemWidht})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +14,7 @@ class FoodListItem extends StatelessWidget {
         Container(
           width: 60,
           height: 60,
-          margin: EdgeInsets.only(right: 12),
+          margin: const EdgeInsets.only(right: 12),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(8),
             image: DecorationImage(

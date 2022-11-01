@@ -11,7 +11,7 @@ class User extends Equatable {
   final String picturePath;
   static String token;
 
-  User(
+  const User(
       {this.id,
       this.name,
       this.email,
@@ -68,7 +68,7 @@ class User extends Equatable {
       [id, name, email, address, houseNumber, phoneNumber, city, picturePath];
 }
 
-User mockUser = User(
+User mockUser = const User(
   id: 1,
   name: 'John Doe',
   email: 'doe@gmail.com',

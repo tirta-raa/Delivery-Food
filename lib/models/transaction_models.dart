@@ -1,5 +1,6 @@
 part of 'models.dart';
 
+// ignore: constant_identifier_names
 enum TransactionStatus { delivered, on_delivery, pending, cancelled }
 
 // * fungsi enum adalah mengganti atau memberi nama pada status yang tadinya berupa angka menjadi kata
@@ -14,7 +15,7 @@ class Transaction extends Equatable {
   final User user;
   final String paymentUrl;
 
-  Transaction(
+  const Transaction(
       {this.id,
       this.food,
       this.quantity,

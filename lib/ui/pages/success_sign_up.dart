@@ -1,6 +1,8 @@
 part of 'pages.dart';
 
 class SuccessSingUpPage extends StatelessWidget {
+  const SuccessSingUpPage({Key key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

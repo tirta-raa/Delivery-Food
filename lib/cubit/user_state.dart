@@ -11,7 +11,7 @@ class UserInitial extends UserState {}
 
 class UserLoaded extends UserState {
   final User user;
-  UserLoaded(this.user);
+  const UserLoaded(this.user);
 
   @override
   List<Object> get props => [user];
@@ -20,7 +20,7 @@ class UserLoaded extends UserState {
 class UserLoadingFailed extends UserState {
   final String message;
 
-  UserLoadingFailed(this.message);
+  const UserLoadingFailed(this.message);
 
   @override
   List<Object> get props => [message];

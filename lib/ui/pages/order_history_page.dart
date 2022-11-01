@@ -1,6 +1,8 @@
 part of 'pages.dart';
 
 class OrderHistoryPage extends StatefulWidget {
+  const OrderHistoryPage({Key key}) : super(key: key);
+
   @override
   _OrderHistoryPageState createState() => _OrderHistoryPageState();
 }
@@ -29,7 +31,7 @@ class _OrderHistoryPageState extends State<OrderHistoryPage> {
         // * if jika state itu transaction loaded maka tampilkan isi konten selain itu tampilkan loading indikator
         if (state is TransactionLoaded) {
           // * if jika state transaction tida ada isinya alias belum memesan apapu tampilkan ilustrasi di bawah
-          if (state.transaction.length == 0) {
+          if (state.transaction.isEmpty) {
             return IlustrationPage(
                 title: 'Ouch Hungry',
                 subtitle: 'Seems you have not\nordered any food yet',
@@ -49,7 +51,7 @@ class _OrderHistoryPageState extends State<OrderHistoryPage> {
                 child: Column(
                   children: [
                     CustomTabBar(
-                      titles: ['In Progress', 'Past Orders'],
+                      titles: const ['In Progress', 'Past Orders'],
                       selectedIndex: selectedIndex,
                       onTap: (index) {
                         setState(() {
@@ -57,7 +59,7 @@ class _OrderHistoryPageState extends State<OrderHistoryPage> {
                         });
                       },
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 16,
                     ),
                     Builder(builder: (_) {
@@ -84,7 +86,7 @@ class _OrderHistoryPageState extends State<OrderHistoryPage> {
                         children: transaction
                             .map(
                               (e) => Padding(
-                                padding: EdgeInsets.fromLTRB(
+                                padding: const EdgeInsets.fromLTRB(
                                     defaultMargin, 0, defaultMargin, 16),
                                 child: GestureDetector(
                                   //? jadi ketika di hisoty masih pending maka kita bisa klik untuk membayar
@@ -103,7 +105,7 @@ class _OrderHistoryPageState extends State<OrderHistoryPage> {
                         // * transaction dengan map disimoan dengan nama 'e' mengembaalikan orderlistitem dengan nama transation 'e' dan itemwidht sesuai dengan list item widht'
                       );
                     }),
-                    SizedBox(
+                    const SizedBox(
                       height: 60,
                     ),
                   ],

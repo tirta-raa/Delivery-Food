@@ -1,6 +1,8 @@
 part of 'pages.dart';
 
 class SuccessOrderPage extends StatelessWidget {
+  const SuccessOrderPage({Key key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -11,11 +13,11 @@ class SuccessOrderPage extends StatelessWidget {
         picturePath: 'assets/bike.png',
         buttonTitle1: 'Order Other Foods',
         buttonTap1: () {
-          Get.offAll(MainPage());
+          Get.offAll(const MainPage());
         },
         buttonTitle2: 'View My Order',
         buttonTap2: () {
-          Get.offAll(MainPage());
+          Get.offAll(const MainPage());
         },
       ),
     );

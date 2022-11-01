@@ -10,15 +10,17 @@ class CustomTabBar extends StatelessWidget {
   final Function(int) onTap;
   // * fungsi untuk menerina int parameter yang akan index yang dipilih lewat paremter ini
 
-  CustomTabBar({this.selectedIndex, @required this.titles, this.onTap});
+  const CustomTabBar(
+      {Key key, this.selectedIndex, @required this.titles, this.onTap})
+      : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: 50,
       child: Stack(
         children: [
           Container(
-            margin: EdgeInsets.only(top: 48),
+            margin: const EdgeInsets.only(top: 48),
             height: 1,
             color: 'F2F2F2'.toColor(),
           ),
@@ -26,7 +28,7 @@ class CustomTabBar extends StatelessWidget {
             children: titles
                 .map(
                   (e) => Padding(
-                    padding: EdgeInsets.only(left: defaultMargin),
+                    padding: const EdgeInsets.only(left: defaultMargin),
                     child: Column(
                       children: [
                         GestureDetector(
@@ -53,7 +55,7 @@ class CustomTabBar extends StatelessWidget {
                         Container(
                           width: 50,
                           height: 3,
-                          margin: EdgeInsets.only(top: 13),
+                          margin: const EdgeInsets.only(top: 13),
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(1.5),
                             color: (titles.indexOf(e) == selectedIndex)
